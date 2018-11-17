@@ -29,9 +29,3 @@ def to_vec(text):
 def to_txt(vector):
     vector = vector.reshape(vector.shape[1]).tolist()
     return __tokenizer.sequences_to_texts([map(round, vector)])[0].replace(' ', '')
-
-def caesar_cipher(string):
-    return ''.join([
-        chr(__chars.range_start + (ord(char) + 3 - __chars.range_start) % __chars.range_length)
-        for char in string
-    ])
