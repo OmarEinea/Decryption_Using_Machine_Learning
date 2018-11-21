@@ -2,14 +2,14 @@ from tools import __chars
 
 def caesar_cipher(string):
     return ''.join([
-        chr(__chars.range_start + (ord(char) + 3 - __chars.range_start) % __chars.range_length)
+        __chars.list[(__chars.list.index(char) + 3) % __chars.length]
         for char in string
     ])
 
 def vigenere_cipher(string):
     return ''.join([
-        chr(__chars.range_start + (ord(char) + shift + 1 - __chars.range_start) % __chars.range_length)
-        for shift, char in enumerate(string)
+        __chars.list[(__chars.list.index(char) + shift) % __chars.length]
+        for shift, char in enumerate(string, 1)
     ])
 
 def shifting_cipher(string, by=1):
