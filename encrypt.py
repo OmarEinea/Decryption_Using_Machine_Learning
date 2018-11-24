@@ -15,3 +15,9 @@ def vigenere_cipher(string):
 def shifting_cipher(string, by=1):
     at = by % len(string)
     return string[at:] + string[:at]
+
+def shifted_vigenere_cipher(string, by=5):
+    return shifting_cipher(vigenere_cipher(string), by)
+
+def vigenere_shifted_cipher(string, by=5):
+    return vigenere_cipher(shifting_cipher(string, by))
