@@ -12,15 +12,16 @@ This project uses Keras on top of TensorFlow to build a Neural Networks model th
 | Vigenère Cipher  | char + shift++  | 100%     |
 | Shifting Cipher  | rotates string  | 100%     |
 | Shifted Vigenère | rotated shift++ | 97.5%    |
+| Keyed Vigenère   | char + key      | 97.1%    |
 
 Tests done on 62 letters (0-9a-zA-Z) with string length of 10 letters.
 
 
 ### Files
 
-- model.ipynb: Jupyter notebook which generates data, trains model and predicts.
-- tools.py: contains project tool methods like data generator and text to vectors.
-- encrypt.py: encryption functions using in the project.
+- [model.ipynb](./model.ipynb): Jupyter notebook which generates data, trains model and predicts.
+- [tools.py](./tools.py): contains project tool methods like data generator and text to vectors.
+- [encrypt.py](./encrypt.py): encryption functions using in the project.
 
 
 ### References
