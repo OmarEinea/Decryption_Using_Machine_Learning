@@ -1,5 +1,6 @@
 from keras.preprocessing.text import Tokenizer as __Tokenizer
 import random as __random, numpy as __numpy, string as __string
+from functools import wraps as __wraps
 
 
 __tokenizer = __Tokenizer(char_level=True, lower=False)
@@ -29,3 +30,12 @@ def to_vec(text, reshape=True):
 def to_txt(vector):
     vector = vector.reshape(vector.shape[1]).tolist()
     return __tokenizer.sequences_to_texts([map(round, vector)])[0].replace(' ', '')
+
+
+def __named(wrapper):
+    @__wraps(wrapper)
+    def named(*args):
+        method = wrapper(*args)
+        method.name = wrapper.__name__
+        return method
+    return named
