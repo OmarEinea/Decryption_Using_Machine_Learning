@@ -32,10 +32,10 @@ def to_txt(vector):
     return __tokenizer.sequences_to_texts([map(round, vector)])[0].replace(' ', '')
 
 
-def __named(wrapper):
+def __named_lambda(wrapper):
     @__wraps(wrapper)
-    def named(*args):
+    def named_lambda(*args):
         method = wrapper(*args)
         method.name = wrapper.__name__
         return method
-    return named
+    return named_lambda

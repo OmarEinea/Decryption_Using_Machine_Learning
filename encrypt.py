@@ -1,7 +1,7 @@
-from tools import __chars, __named
+from tools import __chars, __named_lambda
 
 
-@__named
+@__named_lambda
 def caesar_cipher():
     return lambda string: ''.join([
         __chars[(__chars.index(char) + 3) % len(__chars)]
@@ -9,7 +9,7 @@ def caesar_cipher():
     ])
 
 
-@__named
+@__named_lambda
 def vigenere_cipher(key=None):
     if not key: key = __chars
     return lambda string: ''.join([
@@ -18,17 +18,16 @@ def vigenere_cipher(key=None):
     ])
 
 
-@__named
+@__named_lambda
 def shifting_cipher(by=1):
     return lambda string: string[by:] + string[:by]
 
 
-@__named
+@__named_lambda
 def shifted_vigenere_cipher(by=5):
     return lambda string: shifting_cipher(vigenere_cipher(string), by)
 
 
-@__named
+@__named_lambda
 def vigenere_shifted_cipher(by=5):
     return lambda string: vigenere_cipher(shifting_cipher(string, by))
-
