@@ -11,6 +11,7 @@ This project uses Keras on top of TensorFlow to build a Neural Networks model th
 | Caesar Cipher    | char + 3        | 100%     |
 | Vigenère Cipher  | char + shift++  | 100%     |
 | Shifting Cipher  | rotates string  | 100%     |
+| Transposition    | reorder by map  | 100%     |
 | Shifted Vigenère | rotated shift++ | 97.5%    |
 | Keyed Vigenère   | char + key      | 97.1%    |
 
