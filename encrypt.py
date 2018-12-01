@@ -24,13 +24,13 @@ def shifting_cipher(by=1):
 
 
 @__named_lambda
-def shifted_vigenere_cipher(by=5):
-    return lambda string: shifting_cipher(vigenere_cipher(string), by)
+def shifted_vigenere_cipher(by=5, key=None):
+    return lambda string: shifting_cipher(by)(vigenere_cipher(key)(string))
 
 
 @__named_lambda
-def vigenere_shifted_cipher(by=5):
-    return lambda string: vigenere_cipher(shifting_cipher(string, by))
+def vigenere_shifted_cipher(by=5, key=None):
+    return lambda string: vigenere_cipher(key)(shifting_cipher(by)(string))
 
 
 @__named_lambda
