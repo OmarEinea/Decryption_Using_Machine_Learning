@@ -1,4 +1,7 @@
+from base64 import urlsafe_b64encode as __b64encode
+from cryptography.fernet import Fernet as __Fernet
 from tools import __chars, __named_lambda
+from math import ceil as __ceil
 
 
 @__named_lambda
@@ -41,3 +44,9 @@ def transposition_cipher(order):
     check = set(order)
     if len(check) != 8 or max(check) != '8' or min(check) != '1': raise Exception('Wrong Order!')
     return lambda string: ''.join(transpose(string[i:i+8]) for i in range(0, len(string), 8))
+
+
+@__named_lambda
+def fernet_cipher(key=None):
+    cipher = __Fernet(__b64encode((key * __ceil(32 / len(key)))[:32].encode()) if key else __Fernet.generate_key())
+    return lambda string: cipher.encrypt(string.encode()).decode()

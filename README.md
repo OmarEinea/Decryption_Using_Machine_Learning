@@ -6,6 +6,9 @@ This project uses Keras on top of TensorFlow to build a Neural Networks model th
 
 ### Results
 
+Tests done on 62 letters (0-9a-zA-Z) with string length of 10 letters.
+
+##### Classical encryption
 | Method Name      | Implementation  | Accuracy |
 | ---------------- | --------------- | -------: |
 | Caesar Cipher    | char + 3        | 100%     |
@@ -15,7 +18,11 @@ This project uses Keras on top of TensorFlow to build a Neural Networks model th
 | Shifted Vigenère | rotated shift++ | 97.5%    |
 | Keyed Vigenère   | char + key      | 97.1%    |
 
-Tests done on 62 letters (0-9a-zA-Z) with string length of 10 letters.
+##### Modern encryption
+
+| Method Name      | Accuracy |
+| ---------------- | -------: |
+| Fernet Cipher    | 10.1     |
 
 
 ### Files
