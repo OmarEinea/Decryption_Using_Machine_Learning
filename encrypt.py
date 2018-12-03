@@ -5,9 +5,9 @@ from math import ceil as __ceil
 
 
 @__named_lambda
-def caesar_cipher():
+def caesar_cipher(shift=3):
     return lambda string: ''.join([
-        __chars[(__chars.index(char) + 3) % len(__chars)]
+        __chars[(__chars.index(char) + shift) % len(__chars)]
         for char in string
     ])
 

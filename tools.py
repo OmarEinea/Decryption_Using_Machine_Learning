@@ -1,7 +1,8 @@
 from keras.preprocessing.text import Tokenizer as __Tokenizer
+from random import choices as __choices, sample as __sample
 import numpy as __numpy, string as __string
-from random import choices as __choices
 from functools import wraps as __wraps
+from difflib import SequenceMatcher
 
 
 __tokenizer = __Tokenizer(char_level=True, lower=False)
@@ -14,10 +15,11 @@ def set_characters(chars):
     __chars.extend(chars)
 
 
-def generate_text(length, limit=10000):
+def generate_text(length, limit=10000, unique=False):
+    generate = (lambda: __sample(__chars, length)) if unique else (lambda: __choices(__chars, k=length))
     text = set()
     for _ in range(int(limit*1.2)):
-        text.add(''.join(__choices(__chars, k=length)))
+        text.add(''.join(generate()))
         if len(text) == limit: break
     return list(text)
 
@@ -39,3 +41,7 @@ def __named_lambda(wrapper):
         method.name = wrapper.__name__
         return method
     return named_lambda
+
+
+def match_percentage(s1, s2):
+    return SequenceMatcher(None, s1, s2).find_longest_match(0, len(s1), 0, len(s2)).size / max(len(s1), len(s2)) * 100
