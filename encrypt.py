@@ -1,7 +1,8 @@
-from base64 import urlsafe_b64encode as __b64encode
+from tools import __chars, __named_lambda, generate_text
+from base64 import urlsafe_b64encode as __b64encode, decodebytes
 from cryptography.fernet import Fernet as __Fernet
-from tools import __chars, __named_lambda
 from math import ceil as __ceil
+from Crypto.Cipher import AES, DES
 
 
 @__named_lambda
@@ -46,7 +47,23 @@ def transposition_cipher(order):
     return lambda string: ''.join(transpose(string[i:i+8]) for i in range(0, len(string), 8))
 
 
+def __resize(key, length=32):
+    return (key * __ceil(length / len(key)))[:length]
+
+
 @__named_lambda
 def fernet_cipher(key=None):
-    cipher = __Fernet(__b64encode((key * __ceil(32 / len(key)))[:32].encode()) if key else __Fernet.generate_key())
+    cipher = __Fernet(__b64encode(__resize(key).encode()) if key else __Fernet.generate_key())
     return lambda string: cipher.encrypt(string.encode()).decode()
+
+
+@__named_lambda
+def aes_cipher(key=None):
+    aes = AES.new(__resize(key, 16) if key else generate_text(16, 1)[0])
+    return lambda string: __b64encode(aes.encrypt(string)).decode()
+
+
+@__named_lambda
+def des_cipher(key=None):
+    des = DES.new(__resize(key, 8) if key else generate_text(8, 1)[0])
+    return lambda string: __b64encode(des.encrypt(string)).decode()
