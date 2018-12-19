@@ -1,5 +1,5 @@
 from tools import __chars, __named_lambda, generate_text
-from base64 import urlsafe_b64encode as __b64encode, decodebytes
+from base64 import urlsafe_b64encode as __b64encode
 from cryptography.fernet import Fernet as __Fernet
 from math import ceil as __ceil
 from Crypto.Cipher import AES, DES

@@ -22,7 +22,10 @@ Tests done on 62 letters (0-9a-zA-Z) with string length of 10 letters.
 
 | Method Name      | Accuracy |
 | ---------------- | -------: |
-| Fernet Cipher    | 10.1     |
+| Fernet Cipher    | 10.1%    |
+| DES Cipher       | 8.3%     |
+
+These results include predicted padding and encoding characters.
 
 
 ### Files
