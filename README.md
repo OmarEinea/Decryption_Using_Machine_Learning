@@ -24,6 +24,7 @@ Tests done on 62 letters (0-9a-zA-Z) with string length of 10 letters.
 | ---------------- | -------: |
 | Fernet Cipher    | 10.1%    |
 | DES Cipher       | 8.3%     |
+| AES Cipher       | 8.1%     |
 
 These results include predicted padding and encoding characters.
 

@@ -2,7 +2,7 @@ from tools import __chars, __named_lambda, generate_text
 from base64 import urlsafe_b64encode as __b64encode
 from cryptography.fernet import Fernet as __Fernet
 from math import ceil as __ceil
-from Crypto.Cipher import AES, DES
+from Crypto.Cipher import AES, DES, XOR
 
 
 @__named_lambda
@@ -67,3 +67,9 @@ def aes_cipher(key=None):
 def des_cipher(key=None):
     des = DES.new(__resize(key, 8) if key else generate_text(8, 1)[0])
     return lambda string: __b64encode(des.encrypt(string)).decode()
+
+
+@__named_lambda
+def xor_cipher(key=None):
+    xor = XOR.new(key or generate_text(8, 1)[0])
+    return lambda string: xor.encrypt(string).decode()

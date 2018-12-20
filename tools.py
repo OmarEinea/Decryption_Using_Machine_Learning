@@ -44,4 +44,7 @@ def __named_lambda(wrapper):
 
 
 def match_percentage(s1, s2):
-    return SequenceMatcher(None, s1, s2).find_longest_match(0, len(s1), 0, len(s2)).size / max(len(s1), len(s2)) * 100
+    return max(
+        SequenceMatcher(None, s1, s2).find_longest_match(0, len(s1), 0, len(s2)).size,
+        sum(c1 == c2 for c1, c2 in zip(s1, s2))
+    ) / max(len(s1), len(s2)) * 100
