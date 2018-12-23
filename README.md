@@ -31,9 +31,12 @@ These results include predicted padding and encoding characters.
 
 ### Files
 
-- [model.ipynb](./model.ipynb): Jupyter notebook which generates data, trains model and predicts.
+- [research_paper.pdf](./research_paper.pdf): unpublished, research-like paper I wrote about this project.
+- [text_from_cipher.ipynb](./text_from_cipher.ipynb): main notebook that trains a model to get text from cipher.
+- [key_from_ciphers.ipynb](./key_from_ciphers.ipynb): Jupyter notebook which trains a model to get key from ciphers.
 - [tools.py](./tools.py): contains project tool methods like data generator and text to vectors.
-- [encrypt.py](./encrypt.py): encryption functions using in the project.
+- [encrypt.py](./encrypt.py): list of all encryption functions used in the project (classical & modern).
+- [models/](./models/): a folder that contains all the trained models on different encryption functions.
 
 
 ### References
